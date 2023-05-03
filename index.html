@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .ali{
+        text-align: center;
+        background-color: aqua;
+        font-size: large;
+    
+        }
+        .field{
+            background-color: rgb(59, 172, 220);
+
+        }
+    </style>
+</head>
+<body>
+    
+<body bgcolor="aqua"> <div class="ali">
+    <fieldset class="field">
+  <h1>Guessing Game</h1>
+  <p>Guess a number between 1 and 100:</p>
+  <input type="text" id="guessInput">
+  <button onclick="checkGuess()">Guess</button>
+  <p id="message"></p>
+</fieldset>
+  <script>
+    var numberToGuess = Math.floor(Math.random() * 100) + 1;
+    var numTries = 0;
+    
+    function checkGuess() {
+      var guess = parseInt(document.getElementById("guessInput").value);
+      
+      if (isNaN(guess) || guess < 1 || guess > 100) {
+        document.getElementById("message").textContent = "Invalid guess. Please enter a number between 1 and 100.";
+        return;
+      }
+      
+      numTries++;
+      
+      if (guess === numberToGuess) {
+        document.getElementById("message").textContent = "You won in " + numTries + " tries!";
+      } else if (numTries >= 5) {
+        document.getElementById("message").textContent = "You lost. The number was " + numberToGuess + ".";
+      } else if (guess < numberToGuess) {
+        document.getElementById("message").textContent = "Too low. Try again.";
+      } else {
+        document.getElementById("message").textContent = "Too high. Try again.";
+      }
+    }
+  </script>
+  </div>
+</body>
+</html>
